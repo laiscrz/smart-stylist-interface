@@ -19,3 +19,40 @@ Accept: application/json
         "pais": "Brasil"
     }
 }
+
+###
+
+GET {{HostAddress}}/clients
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/clients/C1
+Accept: application/json
+
+###
+
+PUT {{HostAddress}}/clients/C1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "nome": "Joana Maria",
+    "email": "joana.silva@email.com",
+    "preferenciasEstilo": ["clássico", "moderno"],
+    "dataCadastro": "2024-10-27T10:30:00.000+00:00",
+    "idade": 25,
+    "genero": "Feminino",
+    "telefone": "11985154321",
+    "endereco": {
+        "rua": "Avenida Paulista, 1100",
+        "cidade": "São Paulo",
+        "estado": "SP",
+        "pais": "Brasil"
+    }
+}
+
+###
+
+DELETE {{HostAddress}}/clients/C1
+Content-Type: application/json
