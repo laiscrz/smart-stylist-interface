@@ -35,6 +35,6 @@ public class IdGeneratorService {
         }
 
         // Retorna o novo ID formatado com o prefixo
-        return prefix + nextId; 
+        return prefix + nextId;
     }
 }

@@ -26,8 +26,20 @@ public class ClientService {
     }
 
     public Client save(Client client) {
-        String id = idGeneratorService.generateId("C", "client");
-        client.setId(id);
+        // Somente gerar um novo ID se o cliente ainda não tiver um ID definido
+        if (client.getId() == null || client.getId().isEmpty()) {
+            String id = idGeneratorService.generateId("C", "client");
+            client.setId(id);
+        }
+        return clientRepository.save(client);
+    }
+
+    public Client update(String id, Client client) {
+        // Verifica se o cliente existe
+        if (!clientRepository.existsById(id)) {
+            throw new IllegalArgumentException("Cliente não encontrado com id: " + id);
+        }
+        client.setId(id); // Certifica-se de que o ID fornecido é usado para a atualização
         return clientRepository.save(client);
     }
 

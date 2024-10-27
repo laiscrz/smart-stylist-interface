@@ -18,32 +18,35 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping
-    @ResponseBody // Adicionado para retornar a lista como JSON
+    @ResponseBody
     public List<Client> getAllClients() {
         return clientService.findAll();
     }
 
     @GetMapping("/{id}")
-    @ResponseBody // Adicionado para retornar o cliente como JSON
+    @ResponseBody
     public ResponseEntity<Client> getClientById(@PathVariable String id) {
         return clientService.findById(id)
-                .map(client -> ResponseEntity.ok(client))
+                .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    @ResponseBody // Adicionado para retornar o cliente criado como JSON
+    @ResponseBody
     public ResponseEntity<Client> createClient(@RequestBody Client client) {
         Client savedClient = clientService.save(client);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
     }
 
     @PutMapping("/{id}")
-    @ResponseBody // Adicionado para retornar o cliente atualizado como JSON
+    @ResponseBody
     public ResponseEntity<Client> updateClient(@PathVariable String id, @RequestBody Client client) {
-        client.setId(id); // Define o ID do cliente para garantir que estamos atualizando o correto
-        Client updatedClient = clientService.save(client);
-        return ResponseEntity.ok(updatedClient);
+        try {
+            Client updatedClient = clientService.update(id, client);
+            return ResponseEntity.ok(updatedClient);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
