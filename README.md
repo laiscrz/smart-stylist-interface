@@ -1,8 +1,7 @@
-# 🌟 SmartStylist: Gerenciador de Recomendações de Moda e Experiência de Prova Virtual 👗✨
+# 🌟 Interface de Dados: Smart Stylist
 
-## Descrição do Projeto
+A **Interface de Dados: Smart Stylist** é uma aplicação que permite a interação com diversas coleções de dados relacionadas ao mundo da moda, oferecendo recursos como **gerenciamento de clientes**, **produtos**, **lookbooks**, **tendências de mercado**, e **histórico de compras**.
 
-O **SmartStylist** é um sistema projetado para ajudar os usuários a gerenciar recomendações de moda e proporcionar uma experiência de prova virtual de roupas. Com uma interface intuitiva, o aplicativo permite que os usuários explorem diferentes estilos, experimentem roupas virtualmente e recebam recomendações personalizadas com base em suas preferências de moda.
 
 ## Funcionalidades
 
