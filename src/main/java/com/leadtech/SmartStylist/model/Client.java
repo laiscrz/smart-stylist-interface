@@ -8,6 +8,7 @@ import org.bson.codecs.pojo.annotations.BsonId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Client {
     @Field("preferencias_estilo")
     private List<String> preferenciasEstilo;
     @Field("data_cadastro")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataCadastro;
     private int idade;
     private String genero;
