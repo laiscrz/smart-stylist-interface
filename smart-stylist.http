@@ -56,3 +56,13 @@ Accept: application/json
 
 DELETE {{HostAddress}}/clients/C1
 Content-Type: application/json
+
+###
+
+GET {{HostAddress}}/clients/export/json
+Accept: application/json
+
+###
+
+GET {{HostAddress}}/clients/export/csv
+Accept: application/json
