@@ -13,4 +13,8 @@ public class Endereco {
     private String estado;
     private String pais;
 
+    public String formatEndereco(Endereco endereco) {
+        return String.format("%s, %s, %s, %s", endereco.getRua(), endereco.getCidade(), endereco.getEstado(), endereco.getPais());
+    }
+
 }
