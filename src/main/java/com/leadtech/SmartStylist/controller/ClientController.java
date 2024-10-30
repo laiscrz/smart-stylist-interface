@@ -16,7 +16,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @GetMapping("/list")
+    @GetMapping
     public String viewClientsPage(Model model) {
         List<Client> clients = clientService.findAll();
         model.addAttribute("clients", clients);
@@ -28,14 +28,14 @@ public class ClientController {
         Client client = clientService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid client ID: " + id));
         model.addAttribute("client", client);
-        return "client/details"; // Nome da nova view
+        return "client/details"; 
     }
 
     // Método para exibir o formulário de criação/edição de cliente
     @GetMapping("/new")
     public String showClientForm(Model model) {
         model.addAttribute("client", new Client());
-        return "client/form"; // Nome do arquivo HTML do formulário
+        return "client/form";
     }
 
     @GetMapping("/edit/{id}")
@@ -43,30 +43,32 @@ public class ClientController {
         Client client = clientService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid client ID: " + id));
         model.addAttribute("client", client);
-        return "client/form"; // O mesmo formulário é usado para edição
+        return "client/form";
     }
 
-    @PostMapping("/{id}")
-    public String saveClient(@ModelAttribute("client") Client client) {
-        if (client.getId() != null) {
-            clientService.update(client.getId(), client);
-        } else {
-            clientService.save(client);
+    @PostMapping("/create")
+    public String createClient(@ModelAttribute("client") Client client) {
+        clientService.save(client);
+        return "redirect:/clients";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateClient(@PathVariable String id, @ModelAttribute("client") Client client) {
+        if (clientService.findById(id).isPresent()) {
+            client.setId(id);
+            clientService.update(id, client);
         }
-        return "redirect:/clients/list"; // Redireciona para a lista após salvar
+        return "redirect:/clients";
     }
-
-
-
 
 
     @GetMapping("/delete/{id}")
     public String deleteClient(@PathVariable String id, Model model) {
-        if (clientService.findById(id).isEmpty()) { // Verifica se o cliente não existe
-            return "redirect:/clients/list"; // Redireciona para a lista se o cliente não existir
+        if (clientService.findById(id).isEmpty()) {
+            return "redirect:/clients";
         }
-        clientService.deleteById(id); // Exclui o cliente
-        return "redirect:/clients/list"; // Redireciona para a lista após a exclusão
+        clientService.deleteById(id);
+        return "redirect:/clients";
     }
 
 

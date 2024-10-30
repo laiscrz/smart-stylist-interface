@@ -1,5 +1,6 @@
 package com.leadtech.SmartStylist.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leadtech.SmartStylist.model.components.Endereco;
 import lombok.Data;
 import lombok.Getter;
@@ -31,6 +32,7 @@ public class Client {
     private List<String> preferenciasEstilo;
     @Field("data_cadastro")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dataCadastro;
     private int idade;
     private String genero;
