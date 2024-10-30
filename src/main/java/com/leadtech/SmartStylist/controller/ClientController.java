@@ -17,8 +17,20 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping
-    public String viewClientsPage(Model model) {
-        List<Client> clients = clientService.findAll();
+    public String viewClientsPage(@RequestParam(required = false) String nome,
+                                  @RequestParam(required = false) Integer idadeMin,
+                                  @RequestParam(required = false) Integer idadeMax,
+                                  Model model) {
+        List<Client> clients;
+
+        if (nome != null && !nome.isEmpty()) {
+            clients = clientService.getClientsByName(nome);
+        } else if (idadeMin != null && idadeMax != null) {
+            clients = clientService.getClientsByAge(idadeMin, idadeMax);
+        } else {
+            clients = clientService.findAll();
+        }
+
         model.addAttribute("clients", clients);
         return "client/list";
     }

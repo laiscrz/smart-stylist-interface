@@ -46,4 +46,13 @@ public class ClientService {
     public void deleteById(String id) {
         clientRepository.deleteById(id);
     }
+
+    public List<Client> getClientsByName(String nome) {
+        return clientRepository.findByNome(nome);
+    }
+
+    public List<Client> getClientsByAge(int idadeMin, int idadeMax) {
+        return clientRepository.findByIdadeBetween(idadeMin, idadeMax);
+    }
+
 }
