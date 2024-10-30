@@ -6,73 +6,71 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          margin: 0;
-          background-color: #f8f9fa; /* Fundo claro para contraste */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            background-color: #f8f9fa;
         }
 
         .container-custom {
-          max-width: 90%;
-          flex: 1;
+            max-width: 90%;
+            flex: 1;
         }
 
         .table-custom {
-          background-color: #fff;
-          border-radius: 10px;
-          overflow: hidden;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .table-custom th {
-          background-color: #4169E1;
-          color: #fff;
+            background-color: #4169E1;
+            color: #fff;
         }
 
         .table-custom td {
-          text-align: center;
-          vertical-align: middle;
+            text-align: center;
+            vertical-align: middle;
         }
 
         .table-custom tbody tr {
-          transition: background-color 0.3s;
+            transition: background-color 0.3s;
         }
 
         .table-custom tbody tr:hover {
-          background-color: #f1f1f1;
+            background-color: #f1f1f1;
         }
 
-
         .btn-success {
-          background-color: #4caf50;
-          border-color: #4caf50;
+            background-color: #4caf50;
+            border-color: #4caf50;
         }
 
         .btn-info {
-          background-color: #2196f3;
-          border-color: #2196f3;
-          color : #fff;
+            background-color: #2196f3;
+            border-color: #2196f3;
+            color: #fff;
         }
 
         .btn-primary {
-          background-color: #03346E;
-          border-color: #03346E;
+            background-color: #03346E;
+            border-color: #03346E;
         }
 
         .btn-danger {
-          background-color: #f44336;
-          border-color: #f44336;
+            background-color: #f44336;
+            border-color: #f44336;
         }
 
-
         .btn:hover {
-          filter: brightness(90%);
+            filter: brightness(90%);
         }
 
         /* Efeito de foco nos botões */
         .btn:hover {
-          filter: brightness(90%);
+            filter: brightness(90%);
         }
     </style>
 </head>
@@ -84,6 +82,17 @@
 <!-- Products Table and Export Button -->
 <div class="container container-custom mt-5">
     <h2 class="text-center mb-4">Lista de Produtos</h2>
+
+    <!-- Filtros -->
+    <div class="mb-4">
+        <form th:action="@{/products}" method="get" class="d-flex justify-content-between">
+            <input type="text" name="nome" class="form-control me-2" placeholder="Filtrar por Nome" aria-label="Filtrar por Nome">
+            <input type="text" name="categoria" class="form-control me-2" placeholder="Filtrar por Categoria" aria-label="Filtrar por Categoria">
+            <input type="number" name="precoMin" class="form-control me-2" placeholder="Preço Mínimo" aria-label="Preço Mínimo">
+            <input type="number" name="precoMax" class="form-control me-2" placeholder="Preço Máximo" aria-label="Preço Máximo">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+    </div>
 
     <!-- Export Data Dropdown -->
     <div class="d-flex justify-content-between mb-3">

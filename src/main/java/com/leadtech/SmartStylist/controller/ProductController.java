@@ -17,10 +17,16 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping
-    public String viewProductsPage(Model model) {
-        List<Product> products = productService.findAll();
+    public String viewProductsPage(
+            @RequestParam(required = false) String nome,
+            @RequestParam(required = false) String categoria,
+            @RequestParam(required = false) Double precoMin,
+            @RequestParam(required = false) Double precoMax,
+            Model model
+    ) {
+        List<Product> products = productService.filterProducts(nome, categoria, precoMin, precoMax);
         model.addAttribute("products", products);
-        return "product/list"; // Nome da view para a lista de produtos
+        return "product/list";
     }
 
     @GetMapping("/details/{id}")
@@ -28,13 +34,13 @@ public class ProductController {
         Product product = productService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid product ID: " + id));
         model.addAttribute("product", product);
-        return "product/details"; // Nome da nova view
+        return "product/details";
     }
 
     @GetMapping("/new")
     public String showProductForm(Model model) {
         model.addAttribute("product", new Product());
-        return "product/form"; // Nome do formulário para criar/editar produtos
+        return "product/form";
     }
 
     @GetMapping("/edit/{id}")

@@ -47,4 +47,32 @@ public class ProductService {
     public void deleteById(String id) {
         productRepository.deleteById(id);
     }
+
+    public List<Product> findByNameContaining(String nome) {
+        return productRepository.findByNameContaining(nome);
+    }
+
+    public List<Product> findByCategoriaContaining(String categoria) {
+        return productRepository.findByCategoriaContaining(categoria);
+    }
+
+    public List<Product> findByPrecoBetween(Double precoMin, Double precoMax) {
+        return productRepository.findByPrecoBetween(precoMin, precoMax);
+    }
+
+    public List<Product> filterProducts(String nome, String categoria, Double precoMin, Double precoMax) {
+        List<Product> products = findAll();
+
+        if (nome != null && !nome.isEmpty()) {
+            products = findByNameContaining(nome);
+        }
+        if (categoria != null && !categoria.isEmpty()) {
+            products = findByCategoriaContaining(categoria);
+        }
+        if (precoMin != null && precoMax != null) {
+            products = findByPrecoBetween(precoMin, precoMax);
+        }
+
+        return products;
+    }
 }
