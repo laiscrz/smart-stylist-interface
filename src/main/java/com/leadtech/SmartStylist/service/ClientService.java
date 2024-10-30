@@ -1,7 +1,7 @@
 package com.leadtech.SmartStylist.service;
 
 import com.leadtech.SmartStylist.model.Client;
-import com.leadtech.SmartStylist.repository.ClientRepository;
+import com.leadtech.SmartStylist.repository.IClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ public class ClientService {
     private IdGeneratorService idGeneratorService;
 
     @Autowired
-    private ClientRepository clientRepository;
+    private IClientRepository clientRepository;
 
     public List<Client> findAll() {
         return clientRepository.findAll();
