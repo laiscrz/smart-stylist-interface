@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,43 +24,60 @@ public class ClientController {
     @Autowired
     private ExportService exportService;
 
-    @GetMapping
-    @ResponseBody
-    public List<Client> getAllClients() {
-        return clientService.findAll();
+    @GetMapping("/list")
+    public String viewClientsPage(Model model) {
+        List<Client> clients = clientService.findAll();
+        model.addAttribute("clients", clients);
+        return "client/list";
     }
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<Client> getClientById(@PathVariable String id) {
-        return clientService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    @GetMapping("/details/{id}")
+    public String viewClientDetailsPage(@PathVariable String id, Model model) {
+        Client client = clientService.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid client ID: " + id));
+        model.addAttribute("client", client);
+        return "client/details"; // Nome da nova view
     }
 
-    @PostMapping
-    @ResponseBody
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
-        Client savedClient = clientService.save(client);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedClient);
+    // Método para exibir o formulário de criação/edição de cliente
+    @GetMapping("/new")
+    public String showClientForm(Model model) {
+        model.addAttribute("client", new Client());
+        return "client/form"; // Nome do arquivo HTML do formulário
     }
 
-    @PutMapping("/{id}")
-    @ResponseBody
-    public ResponseEntity<Client> updateClient(@PathVariable String id, @RequestBody Client client) {
-        try {
-            Client updatedClient = clientService.update(id, client);
-            return ResponseEntity.ok(updatedClient);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
+    @GetMapping("/edit/{id}")
+    public String showEditClientForm(@PathVariable String id, Model model) {
+        Client client = clientService.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid client ID: " + id));
+        model.addAttribute("client", client);
+        return "client/form"; // O mesmo formulário é usado para edição
+    }
+
+    @PostMapping("/{id}")
+    public String saveClient(@ModelAttribute("client") Client client) {
+        if (client.getId() != null) {
+            clientService.update(client.getId(), client);
+        } else {
+            clientService.save(client);
         }
+        return "redirect:/clients/list"; // Redireciona para a lista após salvar
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable String id) {
-        clientService.deleteById(id);
-        return ResponseEntity.noContent().build();
+
+
+
+
+    @GetMapping("/delete/{id}")
+    public String deleteClient(@PathVariable String id, Model model) {
+        if (clientService.findById(id).isEmpty()) { // Verifica se o cliente não existe
+            return "redirect:/clients/list"; // Redireciona para a lista se o cliente não existir
+        }
+        clientService.deleteById(id); // Exclui o cliente
+        return "redirect:/clients/list"; // Redireciona para a lista após a exclusão
     }
+
+
 
     // Exportação em JSON
     @GetMapping("/export/json")
