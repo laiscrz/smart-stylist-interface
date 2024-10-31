@@ -38,6 +38,6 @@ public class FashionTrends {
     private List<String> materiais;
 
     private String estilo;
-    
+
     private String fonte;
 }
