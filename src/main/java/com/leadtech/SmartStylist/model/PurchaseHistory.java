@@ -1,11 +1,13 @@
 package com.leadtech.SmartStylist.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.leadtech.SmartStylist.model.components.Endereco;
 import lombok.Data;
 import org.bson.codecs.pojo.annotations.BsonId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -25,6 +27,8 @@ public class PurchaseHistory {
     @Field("product_ids")
     private List<String> productIds;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Field("data_compra")
     private Date dataCompra;
 
@@ -46,6 +50,8 @@ public class PurchaseHistory {
     @Field("nota_cliente")
     private double notaCliente;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Field("data_entrega")
     private Date dataEntrega;
 

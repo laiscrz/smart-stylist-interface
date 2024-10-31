@@ -23,20 +23,26 @@ public class Client {
     @Id
     @BsonId
     @Field("_id")
-    private String id; // Correspondente ao "_id" do MongoDB
+    private String id;
 
     private String nome;
+
     private String email;
 
     @Field("preferencias_estilo")
     private List<String> preferenciasEstilo;
+
     @Field("data_cadastro")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date dataCadastro;
+
     private int idade;
+
     private String genero;
+
     private String telefone;
+
     private Endereco endereco;
 
 

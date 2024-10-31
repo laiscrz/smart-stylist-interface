@@ -18,16 +18,26 @@ public class FashionTrends {
     private String id;
 
     private String nome;
+
     private String descricao;
+
     private int popularidade;
+
     private String sazonalidade;
+
     private String categoria;
+
     private boolean tendencia;
+
 
     @Field("custo_medio")
     private double custoMedio;
+
     private String origem;
+
     private List<String> materiais;
+
     private String estilo;
+    
     private String fonte;
 }
