@@ -95,4 +95,19 @@ public class ExportController {
         exportService.exportPurchaseHistory(response.getOutputStream(), "json");
     }
 
+    @GetMapping(value = "/virtualTryOn/csv", produces = "text/csv")
+    @ResponseBody
+    public void exportVirtualTryOnAsCsv(HttpServletResponse response) throws IOException {
+        response.setHeader("Content-Disposition", "attachment; filename=virtual-try-on.csv");
+        exportService.exportVirtualTryOn(response.getOutputStream(), "csv");
+    }
+
+    @GetMapping(value = "/virtualTryOn/json", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void exportVirtualTryOnAsJson(HttpServletResponse response) throws IOException {
+        response.setHeader("Content-Disposition", "attachment; filename=virtual-try-on.json");
+        exportService.exportVirtualTryOn(response.getOutputStream(), "json");
+    }
+
+
 }

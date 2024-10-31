@@ -30,6 +30,9 @@ public class ExportService {
     @Autowired
     private IPurchaseHistoryRepository purchaseHistoryRepository;
 
+    @Autowired
+    private IVirtualTryOnRepository virtualTryOnRepository;
+
     private final Endereco enderecoFormatter = new Endereco();
 
 
@@ -184,6 +187,39 @@ public class ExportService {
             objectMapper.writeValue(outputStream, purchaseHistories);
         }
     }
+
+    public void exportVirtualTryOn(OutputStream outputStream, String format) throws IOException {
+        List<VirtualTryOn> virtualTryOns = virtualTryOnRepository.findAll();
+
+        if ("csv".equalsIgnoreCase(format)) {
+            // Lógica para exportar como CSV
+            PrintWriter writer = new PrintWriter(outputStream);
+            writer.write("\uFEFF"); // BOM para UTF-8
+            writer.println("id;client_id;products_experimentados;data_experimento;resultado;observacoes;experiencia_interativa_tempo;experiencia_interativa_feedback;recomendacao; nivel_acuracia; status_tentativa");
+
+            for (VirtualTryOn tryOn : virtualTryOns) {
+                writer.printf("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s%n",
+                        tryOn.getId(),
+                        tryOn.getClientId(),
+                        tryOn.getProductsExperimentados() != null ? String.join(",", tryOn.getProductsExperimentados()) : "",
+                        tryOn.getDataExperimento() != null ? tryOn.getDataExperimento().toString() : "",
+                        tryOn.getResultado(),
+                        tryOn.getObservacoes(),
+                        tryOn.getExperienciaInterativa() != null ? tryOn.getExperienciaInterativa().getTempo() : "",
+                        tryOn.getExperienciaInterativa() != null ? tryOn.getExperienciaInterativa().getFeedback() : "",
+                        tryOn.getRecomendacao(),
+                        tryOn.getNivelAcuracia(),
+                        tryOn.getStatusTentativa());
+            }
+            writer.flush();
+        } else if ("json".equalsIgnoreCase(format)) {
+            // Lógica para exportar como JSON
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+            objectMapper.writeValue(outputStream, virtualTryOns);
+        }
+    }
+
 
 
 }
