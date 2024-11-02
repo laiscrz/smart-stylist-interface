@@ -20,7 +20,5 @@ public interface IProductRepository extends MongoRepository<Product, String> {
     @Query("{ 'preco' : { $gte: ?0, $lte: ?1 } }")
     List<Product> findByPrecoBetween(Double precoMin, Double precoMax);
 
-    @Query("{}")
-    List<Product> findAllSorted(Sort sort);
 }
 
