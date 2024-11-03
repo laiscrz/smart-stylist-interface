@@ -21,9 +21,6 @@ A **🌟 Interface de Dados: Smart Stylist** é uma aplicação inovadora que pe
 ---
 ## 📋 Exemplos de CRUD
 
-
----
-
 ### 👗 Produto
 
 - **🆕 Create Produto**
@@ -38,7 +35,7 @@ A **🌟 Interface de Dados: Smart Stylist** é uma aplicação inovadora que pe
     "coresDisponiveis": ["Preto", "Branco"],
     "dataAdicao": "2024-11-02",
     "sazonalidade": "VERÃO",
-    "imagemUrl": "https://l1nk.dev/camiseta-corinthians",
+    "imagemUrl": "https://abrir.link/QslhR",
     "marca": "Nike",
     "padrao": "ESTAMPADO"
   }
@@ -59,7 +56,7 @@ A **🌟 Interface de Dados: Smart Stylist** é uma aplicação inovadora que pe
     "coresDisponiveis": ["Preto", "Branco"],
     "dataAdicao": "2024-11-02",
     "sazonalidade": "VERÃO",
-    "imagemUrl": "https://l1nk.dev/camiseta-corinthians",
+    "imagemUrl": "https://abrir.link/QslhR",
     "marca": "Nike",
     "padrao": "ESTAMPADO"
   }
