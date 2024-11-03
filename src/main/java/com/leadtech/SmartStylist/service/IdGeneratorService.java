@@ -15,7 +15,7 @@ public class IdGeneratorService {
     private MongoTemplate mongoTemplate;
 
     public String generateId(String prefix, String collectionName) {
-        // Cria a agregação para encontrar o maior ID com o prefixo desejado
+        // Cria a agregação para encontrar o maior ID com o prefixo
         Aggregation aggregation = Aggregation.newAggregation(
                 Aggregation.match(Criteria.where("_id").regex("^" + prefix + "\\d+$")),
                 Aggregation.project()
@@ -31,7 +31,7 @@ public class IdGeneratorService {
         if (!results.getMappedResults().isEmpty()) {
             // Acessa o valor máximo diretamente do Document
             Document maxIdResult = results.getMappedResults().get(0);
-            nextId = maxIdResult.getInteger("maxId") + 1; // Incrementa o máximo encontrado
+            nextId = maxIdResult.getInteger("maxId") + 1;
         }
 
         // Retorna o novo ID formatado com o prefixo
