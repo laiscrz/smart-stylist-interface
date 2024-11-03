@@ -218,4 +218,74 @@ Para executar o projeto, você precisará de:
      
 ---
 
+## 🫂 Integrantes
+
+Aqui estão os membros do grupo que participaram durante desenvolvimento desta SPRINT.
+
+* **RM 552258 - Laís Alves da Silva Cruz**
+  - Turma: 2TDSPH
+  - Responsável: Banco de Dados e DevOps
+
+* **RM 552267 - Bianca Leticia Román Caldeira**
+  - Turma: 2TDSPH
+  - Responsável: Mobile
+
+* **RM 552252 – Charlene Aparecida Estevam Mendes Fialho**
+  - Turma: 2TDSPH
+  - Responsável: Java e .NET
+
+* **RM 97916 – Fabricio Torres Antonio**
+  - Turma: 2TDSPH
+  - Responsável: QA
+
+* **RM 99675 – Lucca Raphael Pereira dos Santos**
+  - Turma: 2TDSPZ
+  - Responsável: IA
+    
+<table>
+  <tr>
+      <td align="center">
+      <a href="https://github.com/laiscrz">
+        <img src="https://avatars.githubusercontent.com/u/133046134?v=4" width="100px;" alt="Lais Alves's photo on GitHub"/><br>
+        <sub>
+          <b>Lais Alves</b>
+        </sub>
+      </a>
+      </td>
+      <td align="center">
+      <a href="https://github.com/biancaroman">
+        <img src="https://avatars.githubusercontent.com/u/128830935?v=4" width="100px;" border-radius='50%' alt="Bianca Román's photo on GitHub"/><br>
+        <sub>
+          <b>Bianca Román</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/charlenefialho">
+        <img src="https://avatars.githubusercontent.com/u/94643076?v=4" width="100px;" border-radius='50%' alt="Charlene Aparecida's photo on GitHub"/><br>
+        <sub>
+          <b>Charlene Aparecida</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Fabs0602">
+        <img src="https://avatars.githubusercontent.com/u/111320639?v=4" width="100px;" border-radius='50%' alt="Fabricio Torres's photo on GitHub"/><br>
+        <sub>
+          <b>Fabricio Torres</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/LuccaRaphael">
+        <img src="https://avatars.githubusercontent.com/u/127765063?v=4" width="100px;" border-radius='50%' alt="Lucca Raphael's photo on GitHub"/><br>
+        <sub>
+          <b>Lucca Raphael</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+---
 > O README da Interface de Dados: Smart Stylist oferece uma visão geral do projeto, incluindo funcionalidades, tecnologias, pré-requisitos e instruções de inicialização. Também aborda a possibilidade de importar dados em JSON e CSV, facilitando a integração de informações ao sistema. 📚
