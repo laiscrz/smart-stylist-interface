@@ -37,8 +37,8 @@ A **🌟 Interface de Dados: Smart Stylist** é uma aplicação inovadora que pe
     "tamanhosDisponiveis": ["P", "M", "G", "GG"],
     "coresDisponiveis": ["Preto", "Branco"],
     "dataAdicao": "2024-11-02",
-    "sazonalidade": "INVERNO",
-    "imagemUrl": "https://abrir.link/FOCcg",
+    "sazonalidade": "VERÃO",
+    "imagemUrl": "https://l1nk.dev/camiseta-corinthians",
     "marca": "Nike",
     "padrao": "ESTAMPADO"
   }
@@ -58,8 +58,8 @@ A **🌟 Interface de Dados: Smart Stylist** é uma aplicação inovadora que pe
     "tamanhosDisponiveis": ["P", "M", "G", "GG", "XG"],  
     "coresDisponiveis": ["Preto", "Branco"],
     "dataAdicao": "2024-11-02",
-    "sazonalidade": "INVERNO",
-    "imagemUrl": "https://abrir.link/FOCcg",
+    "sazonalidade": "VERÃO",
+    "imagemUrl": "https://l1nk.dev/camiseta-corinthians",
     "marca": "Nike",
     "padrao": "ESTAMPADO"
   }
